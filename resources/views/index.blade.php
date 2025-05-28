@@ -22,7 +22,7 @@
                             </thead>
                             <tbody>
                                 @foreach ( $recipes as $recipe )
-                                
+
                                 <tr>
                                     <td>{{  $recipe->recipename }}</td>
                                     <td>{{  $recipe->ingredient_name }}</td>
@@ -31,8 +31,13 @@
                                     <td>
                                         <a href="{{ route('editrecipe', $recipe->id) }}" class="btn btn-success">Edit</a>
                                         <a href="{{ route('showrecipe', $recipe->id) }}" class="btn btn-info">Details</a>
-                                        <a href="" class="btn btn-danger">Delete</a>
 
+
+                                        <form action="{{ route('deleterecipe', $recipe->id)}}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type='submit' class="btn btn-danger">Delete</a>
+                                        </form>
                                     </td>
 
                                 </tr>
