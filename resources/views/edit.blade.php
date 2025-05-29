@@ -32,7 +32,7 @@
                                                 <input type="text" class="form-control @error('ingredient_name') is-invalid @enderror"
                                                     id="ingredient_name" name="ingredient_name" value="{{ $recipe->ingredient_name }}" required>
                                                 @error('ingredient_name')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                    < div class="invalid-feedback">{{ $message }}</>
                                                 @enderror
                                             </div>
 

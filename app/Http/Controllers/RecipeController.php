@@ -36,10 +36,10 @@ class RecipeController extends Controller
             'ingredient_name'=>$request->ingredient_name,
             'quantity'=>$request->quantity,
             'instructions'=>$request->instructions,
-    
+
         ]);
         return redirect()->route('recipelist');
-           
+
     }
 
     /**
@@ -68,9 +68,9 @@ class RecipeController extends Controller
             'ingredient_name'=>$request->ingredient_name,
             'quantity'=>$request->quantity,
             'instructions'=>$request->instructions,
-    
+
         ]);
-        return redirect()->route('recipelist'); 
+        return redirect()->route('recipelist');
     }
 
     /**
