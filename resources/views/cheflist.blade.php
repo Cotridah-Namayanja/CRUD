@@ -37,13 +37,16 @@
                             </td>
                         </tr>
                          @endforeach
+
                         @if(count($chefs) == 0)
+
                         <tr>
                             <td colspan="5" class="text-center text-muted">No chefs available.</td>
                         </tr>
                         @endif
                     </tbody>
                 </table>
+                {{ $chefs->links() }}
             </div>
         </div>
     </div>

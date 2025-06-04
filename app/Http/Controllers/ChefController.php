@@ -12,12 +12,14 @@ class ChefController extends Controller
      */
     public function cheflist()
     {
+
+
         $chefs = Chef::get();
+        $chefs = Chef::paginate(2);
         return view('cheflist', [
             'chefs' => $chefs
         ]);
     }
-
 
 
     /**
@@ -34,6 +36,12 @@ class ChefController extends Controller
      */
     public function store(Request $request)
     {
+
+        request()->validate([
+        'name' => 'required|string|max:255',
+        'email'=> 'required',
+         'experience' => 'required|integer|between:2,10'
+        ]);
         Chef::create([
             'name' => $request->name,
             'email'=>$request->email,
@@ -41,11 +49,13 @@ class ChefController extends Controller
             'experience'=>$request->experience,
 
         ]);
+
+        flash()->success('Chef created successfully!');
         return redirect()->route('cheflist');
     }
 
     /**
-     * Display the specified resource.
+     * Display the specific nd resource.
      */
     public function show(Chef $chef)
     {
@@ -57,7 +67,7 @@ class ChefController extends Controller
      */
     public function editchef(Chef $chef)
     {
-        return view('editchef', ['chef'=>$chef]);
+        return view('editchef', compact('chef'));
 
     }
 
@@ -67,6 +77,11 @@ class ChefController extends Controller
     public function updatechef(Request $request, Chef $chef)
     {
 
+        request()->validate([
+            'name' => 'required|string|max:255',
+            'email'=> 'required',
+            'experience' => 'required|integer|between:2,10'
+        ]);
         $chef->update([
             'name' => $request->name,
             'email'=>$request->email,
@@ -84,7 +99,10 @@ class ChefController extends Controller
     {
 
             $chef->delete();
+            flash()->success('Chef deleted successfully!');
             return redirect()->route('cheflist');
+
+
 
     }
 }

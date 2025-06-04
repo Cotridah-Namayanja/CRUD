@@ -16,7 +16,7 @@
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"
                                     id="name" name="name" value="{{ old('name') }}" required>
                                 @error('name')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    <span class="fs-6 text-danger ">{{ $message }}</span>
                                 @enderror
                             </div>
 
