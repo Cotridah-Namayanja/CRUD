@@ -26,6 +26,8 @@ Route::get('/cheflist', [ChefController::class,'cheflist'])->name('cheflist');
 
  Route::get('/showchef/{chef}', [ChefController::class, 'show'])->name('showchef');
  Route::DELETE('/deletechef/{chef}', [ChefController::class, 'destroy'])->name('deletechef');
+ Route::get('/search', [ChefController::class, 'search'])->name('searchchef');
+
 
 
 

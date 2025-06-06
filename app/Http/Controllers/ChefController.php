@@ -15,10 +15,35 @@ class ChefController extends Controller
 
 
         $chefs = Chef::get();
-        $chefs = Chef::paginate(2);
+        $chefs = Chef::paginate(10);
         return view('cheflist', [
             'chefs' => $chefs
         ]);
+    }
+
+   /**
+     * search function
+     */
+
+    public function search(Request $request)
+    {
+
+        $search =$request->search;
+        // $chefs=Chef::where(function($query) use ($search){
+        //     $query->where('name', 'like', "%$search%");
+        // });.
+
+
+        /**
+         *     maya
+         *     %maya%
+         */
+        // $chefs = Chef::where('name', 'like', "%".$search."%")->paginate();
+        $chefs = Chef::when($search != "", function($query){
+            $query->where('name', 'like', "%".$search."%")
+                 ->orWhere('email', 'like', "%".$search."%" );
+        })->paginate(10);
+        return view('cheflist', compact('chefs', 'search'));
     }
 
 
@@ -40,7 +65,8 @@ class ChefController extends Controller
         request()->validate([
         'name' => 'required|string|max:255',
         'email'=> 'required',
-         'experience' => 'required|integer|between:2,10'
+         'experience' => 'required|integer|between:2,10',
+         'phone'=> 'required|phone:UG,INTERNATIONAL'
         ]);
         Chef::create([
             'name' => $request->name,

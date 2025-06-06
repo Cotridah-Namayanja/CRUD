@@ -10,6 +10,11 @@ class Recipe extends Model
         'recipename',
         'ingredient_name',
         'quantity',
-        'instructions'
+        'instructions',
+        'chef_id'
     ];
+
+    public function chef(){
+        return $this->belongsTo(Chef::class,'chef_id','id');
+    }
 }

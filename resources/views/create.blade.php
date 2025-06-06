@@ -54,6 +54,17 @@
                                                 @enderror
                                             </div>
 
+                                            <div class="mb-3">
+                                                <label for="chef" class="form-label">Chef</label>
+                                                <select name="chef" id="chef">
+                                                    <option>Select chef</option>
+                                                    @foreach ($chefs as $chef)
+                                                    <option value="{{ $chef->id }}"> {{ $chef->name }}</option>
+
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
                                             <button type="submit" class="btn btn-primary">Create Recipe</button>
                                         </form>
                                     </div>

@@ -17,17 +17,37 @@
                                     <th>ingredient_name</th>
                                     <th>quantity</th>
                                     <th>instructions</th>
+                                    <th>Chef</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ( $recipes as $recipe )
 
+
                                 <tr>
                                     <td>{{  $recipe->recipename }}</td>
                                     <td>{{  $recipe->ingredient_name }}</td>
                                     <td>{{ $recipe->quantity }}</td>
                                     <td>{{ $recipe->instructions }}</td>
+                                    <td>
+                                        {{--
+
+                                        $age = $nanme == 'kol' ? '6' : '9';
+
+                                        $age = $this->age ?? 0;
+
+                                        --}}
+
+                                        {{-- {{ $recipe->chef?->name ?? "na" }} --}}
+                                        @if ($recipe->chef)
+                                         {{ $recipe->chef->name }}
+
+                                        @else
+                                        --
+
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="{{ route('editrecipe', $recipe->id) }}" class="btn btn-success">Edit</a>
                                         <a href="{{ route('showrecipe', $recipe->id) }}" class="btn btn-info">Details</a>

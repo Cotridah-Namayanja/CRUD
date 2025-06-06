@@ -24,7 +24,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('cheflist') }}">Chefs</a>
                     </li>
-                    <form class="d-flex mx-auto" action="" method="GET">
+                    <form class="d-flex mx-auto" action="{{ route('searchchef') }}" method="/search">
                         <div class="input-group">
                             <input type="search" name="search" class="form-control" placeholder=" " aria-label="Search">
                             <button class="btn btn-outline-primary" type="submit">

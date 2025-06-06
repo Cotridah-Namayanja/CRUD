@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chef;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes= Recipe::get();
+        $recipes= Recipe::with('chef')->get();
         return view('index', [
             'recipes'=> $recipes
         ]);
@@ -23,7 +24,10 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        return view('create');
+        $chefs=Chef::get();
+        return view('create', [
+            'chefs'=> $chefs
+        ]);
     }
 
     /**
@@ -36,6 +40,7 @@ class RecipeController extends Controller
             'ingredient_name'=>$request->ingredient_name,
             'quantity'=>$request->quantity,
             'instructions'=>$request->instructions,
+            'chef_id'=>$request->chef,
 
         ]);
         return redirect()->route('recipelist');
