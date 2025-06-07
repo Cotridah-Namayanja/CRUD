@@ -12,6 +12,7 @@ class Chef extends Model
         'phone',
         'experience'
     ];
+    
     public function recipes(){
         return $this->hasMany(Recipe::class,'chef_id', 'id');
     }

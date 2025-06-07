@@ -54,6 +54,21 @@
                                                 @enderror
                                             </div>
 
+                                            <div class="mb-3">
+                                                <label for="chef" class="form-label">Chef</label>
+                                                <select class="form-control @error('instructions') is-invalid @enderror" name="chef" id="chef">
+                                                    @if ($recipe->chef)
+                                                    <option value='{{ $recipe->chef_id }}'>{{ $recipe->chef->name }}</option>
+                                                    @else
+                                                    <option>Select chef</option>
+                                                    @endif
+                                                    @foreach ($chefs as $chef)
+                                                    <option value="{{ $chef->id }}"> {{ $chef->name }}</option>
+
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
                                             <button type="submit" class="btn btn-primary">Save Recipe</button>
                                         </form>
                                     </div>

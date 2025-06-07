@@ -12,42 +12,29 @@
                             <div class="col-md-8 mx-auto">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h2>Show Recipe</h2>
+                                        <h2>Recipe Details</h2>
                                     </div>
                                             <div class="mb-3">
-                                                <label for="recipename" class="form-label">Recipe Name</label>
-                                                <input type="text" class="form-control  @error('recipename') is-invalid @enderror"
-                                                    id="recipename" name="recipename" value="{{ $recipe->recipename }}" required>
-                                                @error('recipename')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
+                                                <label for="recipename" class="form-label">Recipe Name:</label>
+                                           {{ $recipe->recipename }}
+
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="ingredient_name" class="form-label">Ingredients</label>
-                                                <input type="text" class="form-control @error('ingredient_name') is-invalid @enderror"
-                                                    id="ingredient_name" name="ingredient_name" value="{{ $recipe->ingredient_name }}" required>
-                                                @error('ingredient_name')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
+                                                <label for="ingredient_name" class="form-label">Ingredients:</label>
+                                                {{ $recipe->ingredient_name }}
+
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="quantity" class="form-label">Quantity</label>
-                                                <input type="text" class="form-control @error('quantity') is-invalid @enderror"
-                                                    id="quantity" name="quantity" value="{{ $recipe->quantity }}" required>
-                                                @error('quantity')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
+                                                <label for="quantity" class="form-label">Quantity:</label>
+                                               {{ $recipe->quantity }}
+
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="instructions" class="form-label">Instructions</label>
-                                                <textarea class="form-control @error('instructions') is-invalid @enderror"
-                                                    id="instructions" name="instructions" rows="4" required>{{ $recipe->instructions }}</textarea>
-                                                @error('instructions')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
+                                                <label for="instructions" class="form-label">Instructions:</label>
+                                               {{ $recipe->instructions }}
                                             </div>
 
                                             <div class="mb-3">

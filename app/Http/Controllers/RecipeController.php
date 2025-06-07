@@ -60,7 +60,13 @@ class RecipeController extends Controller
      */
     public function edit(Recipe $recipe)
     {
-        return view('edit', ['recipe'=>$recipe]);
+        $chefs=Chef::all();
+
+        return view('edit', [
+            'recipe'=>$recipe,
+            'chefs'=>$chefs,
+        ]);
+
     }
 
     /**
@@ -73,6 +79,9 @@ class RecipeController extends Controller
             'ingredient_name'=>$request->ingredient_name,
             'quantity'=>$request->quantity,
             'instructions'=>$request->instructions,
+            'chef_id'=>$request->chef,
+
+
 
         ]);
         return redirect()->route('recipelist');
